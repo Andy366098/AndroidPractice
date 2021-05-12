@@ -26,7 +26,7 @@ public class FragmentTest02Order extends Fragment {
     private String mParam2;
     private View view;                      //宣告一個View變數
     private NumberPicker mNumberPicker;     //宣告一個NumberPicker變數
-    //private NumberPicker mNumberPicker2;
+    private NumberPicker mNumberPicker2;
     public FragmentTest02Order() {
         // Required empty public constructor
     }
@@ -75,12 +75,12 @@ public class FragmentTest02Order extends Fragment {
         mNumberPicker.setValue(25);//設定現值
         int nowValue = mNumberPicker.getValue(); //取得現值
         mNumberPicker.setOnValueChangedListener(numPickerOnValueChange); //設定數字變化監聽事件
-        /*mNumberPicker2 = (NumberPicker)view.findViewById(R.id.numberPicker2);     //第二個數字滾輪
+        mNumberPicker2 = (NumberPicker)view.findViewById(R.id.numberPicker2);     //第二個數字滾輪
         mNumberPicker2.setMinValue(0);
         mNumberPicker2.setMaxValue(200);
         mNumberPicker2.setValue(25);
         int nowValue2 = mNumberPicker.getValue();
-        mNumberPicker2.setOnValueChangedListener(numPickerOnValueChange);*/
+        mNumberPicker2.setOnValueChangedListener(numPickerOnValueChange);
         return view;
     }
     private NumberPicker.OnValueChangeListener numPickerOnValueChange = new NumberPicker.OnValueChangeListener() {
@@ -89,8 +89,8 @@ public class FragmentTest02Order extends Fragment {
             switch (picker.getId()){
                 case R.id.numberPicker:
                     break;
-                /*case R.id.numberPicker2:
-                    break;*/
+                case R.id.numberPicker2:
+                    break;
             }
 
         }

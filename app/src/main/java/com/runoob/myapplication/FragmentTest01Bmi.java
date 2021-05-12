@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +27,11 @@ public class FragmentTest01Bmi extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private View view;
+    private SeekBar seekbar;
+    private SeekBar seekbar2;
+    private TextView seektext;
+    private TextView seektext2;
     public FragmentTest01Bmi() {
         // Required empty public constructor
     }
@@ -59,6 +67,54 @@ public class FragmentTest01Bmi extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_test01_bmi, container, false);
+        view = inflater.inflate(R.layout.fragment_test01_bmi, container, false);
+        seekbar = (SeekBar) view.findViewById(R.id.seekBar);
+        seektext = (TextView)view.findViewById(R.id.textView5);
+        seekbar.setMax(150);//設定SeekBar最大值
+        seekbar.setProgress(80);//設定SeekBar拖移初始值
+        seektext.setText("目前拖移植：" +seekbar.getProgress() + "  /  最大值："+seekbar.getMax());   //設定顯示的文字
+        seekbar.setOnSeekBarChangeListener(progress);
+        seekbar2 = (SeekBar) view.findViewById(R.id.seekBar2);
+        seektext2 = (TextView)view.findViewById(R.id.textView6);
+        seekbar2.setMax(100);//設定SeekBar最大值
+        seekbar2.setProgress(20);//設定SeekBar拖移初始值
+        seektext2.setText("目前拖移植：" +seekbar2.getProgress() + "  /  最大值："+seekbar2.getMax());   //設定顯示的文字
+        seekbar2.setOnSeekBarChangeListener(progress2);
+        return view;
     }
+    private SeekBar.OnSeekBarChangeListener progress = new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            seektext.setText("目前拖移植：" + progress + "  /  最大值："+seekbar.getMax());
+        }
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {     //當開始拖動SeekBar時會觸發
+            Toast showMessage = Toast.makeText(getActivity(), "開始拖動SeekBar", Toast.LENGTH_SHORT);
+            showMessage.show();
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {      //當放開SeekBar時會觸發
+            Toast showMessage = Toast.makeText(getActivity(), "放開SeekBar", Toast.LENGTH_SHORT);
+            showMessage.show();
+        }
+    };
+    private SeekBar.OnSeekBarChangeListener progress2 = new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            seektext2.setText("目前拖移植：" + progress + "  /  最大值："+seekbar2.getMax());
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+            Toast showMessage2 = Toast.makeText(getActivity(), "開始拖動SeekBar2", Toast.LENGTH_SHORT);
+            showMessage2.show();
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            Toast showMessage2 = Toast.makeText(getActivity(), "放開SeekBar2", Toast.LENGTH_SHORT);
+            showMessage2.show();
+        }
+    };
 }

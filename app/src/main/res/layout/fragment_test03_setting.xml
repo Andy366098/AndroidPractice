@@ -1,15 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#96E3BF"
-    tools:context=".FragmentTest03Setting">
+    android:background="#8BF4DC"
+    tools:context=".MainActivity">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="456" />
 
-</FrameLayout>
+        android:id="@+id/hallo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Hello World!"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/superLink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/myTextView"
+        android:layout_width="393dp"
+        android:layout_height="158dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
+        android:autoSizeTextType="uniform"
+        android:background="@android:color/darker_gray"
+        android:drawableLeft="@drawable/goback"
+        android:gravity="center"
+        android:text="文字顯示範例"
+        android:textColor="#FF0000"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jtToast" />
+
+    <TextView
+
+        android:id="@+id/superLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="https://rx1226.pixnet.net/blog/post/235665028"
+        app:layout_constraintBottom_toTopOf="@+id/jtToast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hallo" />
+
+    <Button
+        android:id="@+id/jtToast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="JumpToImage"
+        app:layout_constraintBottom_toTopOf="@+id/myTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/superLink" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="這裡展示文字顯示"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/hallo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="192dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="點擊此按鈕可以跳轉到提示訊息擊對話方塊的展示->"
+        app:layout_constraintBottom_toBottomOf="@+id/jtToast"
+        app:layout_constraintEnd_toStartOf="@+id/jtToast"
+        app:layout_constraintTop_toTopOf="@+id/jtToast" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
