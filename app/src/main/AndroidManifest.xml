@@ -21,7 +21,8 @@
         <activity android:name=".Toast_AlertDialog" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="sensorLandscape"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
