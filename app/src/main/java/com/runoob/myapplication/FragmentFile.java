@@ -82,12 +82,21 @@ public class FragmentFile extends Fragment {
         btnClear = (Button)view.findViewById(R.id.btnClear);
         btnEnd = (Button)view.findViewById(R.id.btnEnd);
 
-        btnAppend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(edtID.getText().toString().equals("") || edtPW.getText().toString().equals("")){
-                    Toast.makeText(getActivity(),"帳號或密碼不可為空",Toast.LENGTH_SHORT).show();
-                }else {
+        btnAppend.setOnClickListener(listener);
+        btnClear.setOnClickListener(listener);
+        btnEnd.setOnClickListener(listener);
+
+        return view;
+    }
+    private View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case(R.id.btnAppend):
+                    if(edtID.getText().toString().equals("") || edtPW.getText().toString().equals("")){
+                        Toast.makeText(getActivity(),"帳號或密碼不可為空",Toast.LENGTH_SHORT).show();
+                        break;
+                    }
                     FileOutputStream fout = null;            //建立寫入資料流
                     BufferedOutputStream buffout = null;
                     try {
@@ -105,13 +114,24 @@ public class FragmentFile extends Fragment {
                     DisplayFile(FILENAME);
                     edtID.setText("");
                     edtPW.setText("");
-                }
+                    break;
+                case(R.id.btnClear):    //清除資料
+                    try {
+                        //以複寫的方式開啟檔案
+                        fout = getActivity().openFileOutput(FILENAME,Context.MODE_PRIVATE);
+                        fout.close();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    DisplayFile(FILENAME);
+                    break;
+                case (R.id.btnEnd):
+                    getActivity().finish();
+                    break;
             }
-        });
 
-
-        return view;
-    }
+        }
+    };
     private void DisplayFile(String fname){
         FileInputStream fin = null;         //建立讀取資料流
         BufferedInputStream buffin = null;
