@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new FragmentTest03Setting(),"Setting");
         adapter.addFragment(new GoToFile(),"GoGoGo");
         adapter.addFragment(new FragmentFile(),"file");
+        adapter.addFragment(new FragmentFile2(),"file2");
         viewPager = findViewById(R.id.viewPagerMain);   //獲取介面元件
         viewPager.setAdapter(adapter);          //設定適配器
         viewPager.setOffscreenPageLimit(3);     //動態載入的頁面限制

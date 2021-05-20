@@ -100,7 +100,7 @@ public class FragmentFile extends Fragment {
                     FileOutputStream fout = null;            //建立寫入資料流
                     BufferedOutputStream buffout = null;
                     try {
-                        fout = getActivity().openFileOutput(FILENAME, Context.MODE_APPEND);
+                        fout = getActivity().openFileOutput(FILENAME, Context.MODE_APPEND); //MODE_APPEND表示會追加在檔案之後
                         buffout = new BufferedOutputStream(fout);
                         //寫入帳號及密碼
                         buffout.write(edtID.getText().toString().getBytes());       //把輸入的帳號轉成字串轉成byte
